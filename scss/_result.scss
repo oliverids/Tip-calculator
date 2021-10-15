@@ -1,0 +1,54 @@
+
+.result {
+    margin-top: 1rem;
+    background: $verdeescuro;
+    padding: 28px;
+    border-radius: 20px;
+
+    @media only screen and (min-width: 1000px) {
+        padding: 64px 28px 32px 28px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .amount,
+    .total {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1.2rem;
+
+        .info {
+            
+            p {
+                color: $branco;
+            }
+
+            span {
+                color: $verde;
+                font-size: 0.9rem;
+            }
+        }
+
+        #amount-cash, #total-cash {
+            font-size: 2rem;
+            font-weight: 700;
+            color: $azul;
+        }
+    }
+
+    #reset {
+        width: 100%;
+        padding: 8px 0;
+        border-radius: 4px;
+        background: $azul;
+        font-weight: 700;
+        text-transform: uppercase;
+        color: $verdeescuro;
+
+        // @media only screen and (min-width: 1000px) {
+        //     align-self: flex-end;
+        // }
+    }
+}

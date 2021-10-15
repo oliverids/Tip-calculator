@@ -1,0 +1,56 @@
+.bill,
+.tip,
+.number {
+    display: flex;
+    flex-direction: column;
+}
+
+.tip {
+    .choices {
+        margin-top: 1rem;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+
+        li {
+            width: calc(45%);
+            margin-bottom: 1rem;
+
+            button {
+                background: $verdeescuro;
+                width: 100%;
+                padding: 8px 0;
+                border-radius: 6px;
+                font-weight: 700;
+                color: $branco;
+
+                &.ativo {
+                    background: $azul;
+                    color: $verdeescuro;
+                }
+            }
+
+            input {
+                background: #F3F8FB;
+                width: 100%;
+                height: 100%;
+                border: none;
+                border-radius: 6px;
+                padding: 12px;
+                font-size: 1.4rem;
+                color: $verdeescuro;
+                font-weight: 700;
+
+                &::placeholder {
+                    text-align: right;
+                    font-family: "Space Mono", monospace;
+                    color: $verde;
+                }
+            }
+        }
+    }
+}
+
+.number {
+    margin-top: -1rem;
+}
