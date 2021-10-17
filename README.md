@@ -31,6 +31,7 @@ O usuário pode:
 - Flexbox
 - SASS Compiler
 - Mobile-first Workflow
+- JavaScript
 
 <br />
 ##### Frontend Mentor - [@oliverids](https://www.frontendmentor.io/profile/oliverids)
