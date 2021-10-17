@@ -9,10 +9,7 @@ let people = document.getElementById('number'),
         number++;
     } else {
         number--;
-
-        if (number < 1) {
-            number = 1;
-        }
+        if (number < 1) number = 1;
     }
     people.value = number;
 }));
@@ -28,9 +25,9 @@ tips.forEach(e => e.addEventListener('click', evt => {
 let bill = document.getElementById('bill'),
     total = document.getElementById('total-cash'),
     tipamount = document.getElementById('amount-cash'),
+    custom = document.getElementById('custom'),
     numb;
 
-let custom = document.getElementById('custom');
 function calcCustom() {
     tips.forEach(e => e.classList.remove('ativo'));
     let customTip = custom.value / 100,
@@ -39,28 +36,27 @@ function calcCustom() {
     if (valor && customTip) {
         let numb = valor * customTip / people.value;
         tipamount.innerText = `$${numb.toFixed(2)}`;
-        total.innerText = `$${(valor + valor * customTip)/people.value}`;
+        total.innerText = `$${(valor + valor * customTip) / people.value}`;
     }
 }
 
 function calc() {
     let valor = +bill.value;
     if (valor && (selectedTip)) {
+        custom.value = '';
         tip = +(selectedTip[0].innerText.slice(0, -1)) / 100;
         numb = valor * tip / people.value;
         tipamount.innerText = `$${numb.toFixed(2)}`;
-        total.innerText = `$${(valor + valor * tip)/people.value}`;
+        total.innerText = `$${(valor + valor * tip) / people.value}`;
     }
 }
 
-tips.forEach(e => e.addEventListener('click', calc));
-bill.addEventListener('input', calc);
 custom.addEventListener('input', calcCustom);
-
-[minus, plus].forEach(e => e.addEventListener('click', () => {
-    calc();
-    calcCustom();
-}));
+tips.forEach(each => each.addEventListener('click', calc));
+[calc, calcCustom].forEach(exe => {
+    bill.addEventListener('input', exe);
+    [minus, plus].forEach(e => e.addEventListener('click', exe));
+})
 
 let reset = document.getElementById('reset');
 reset.addEventListener('click', () => {
