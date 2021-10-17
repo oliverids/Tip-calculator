@@ -15,7 +15,6 @@ O usuário pode:
 #### Screenshot
 
 <p align="center">
-<!-- ![](./Screenshot_1.png) -->
 <img src="Screenshot_1.png"/>
 </p>
 
@@ -25,7 +24,7 @@ O usuário pode:
 
 ## Processo
 
-#### Built with
+#### Feito com
 
 - HTML5 semântico
 - Propriedades CSS customizadas
