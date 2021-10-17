@@ -101,3 +101,8 @@ h1,
 p {
     line-height: 1.5;
 }
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none;
+}

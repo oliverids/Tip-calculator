@@ -5,6 +5,14 @@
     flex-direction: column;
 }
 
+.bill,
+.number {
+    input {
+        text-align: right;
+        font-size: 1.4rem;
+    }
+}
+
 .tip {
     .choices {
         margin-top: 1rem;
@@ -40,6 +48,7 @@
                 font-size: 1.4rem;
                 color: $verdeescuro;
                 font-weight: 700;
+                text-align: right;
 
                 &::placeholder {
                     text-align: right;
@@ -53,4 +62,20 @@
 
 .number {
     margin-top: -1rem;
+
+    .ppl {
+        display: flex;
+        button {
+            padding: 0 1rem;
+            
+            i {
+                color: $verde;
+            }
+        }
+        
+        input {
+            font-size: 1.4rem;
+            margin-right: 8px;
+        }
+    }
 }
