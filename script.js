@@ -21,34 +21,53 @@ let tips = document.querySelectorAll('.choices li button'),
     selectedTip;
 tips.forEach(e => e.addEventListener('click', evt => {
     tips.forEach(e => e.classList.remove('ativo'));
-    evt.currentTarget.classList.add('ativo');
+    if (bill.value) evt.currentTarget.classList.add('ativo');
     selectedTip = document.querySelectorAll('.choices li button.ativo span');
 }));
 
 let bill = document.getElementById('bill'),
+    total = document.getElementById('total-cash'),
     tipamount = document.getElementById('amount-cash'),
     numb;
+
+let custom = document.getElementById('custom');
+function calcCustom() {
+    tips.forEach(e => e.classList.remove('ativo'));
+    let customTip = custom.value / 100,
+        valor = +bill.value;
+
+    if (valor && customTip) {
+        let numb = valor * customTip / people.value;
+        tipamount.innerText = `$${numb.toFixed(2)}`;
+        total.innerText = `$${(valor + valor * customTip)/people.value}`;
+    }
+}
+
 function calc() {
-    let valor = bill.value;
+    let valor = +bill.value;
     if (valor && (selectedTip)) {
         tip = +(selectedTip[0].innerText.slice(0, -1)) / 100;
         numb = valor * tip / people.value;
         tipamount.innerText = `$${numb.toFixed(2)}`;
+        total.innerText = `$${(valor + valor * tip)/people.value}`;
     }
 }
 
 tips.forEach(e => e.addEventListener('click', calc));
 bill.addEventListener('input', calc);
-[minus, plus].forEach(e => e.addEventListener('click', calc));
+custom.addEventListener('input', calcCustom);
 
-let custom = document.getElementById('custom');
-custom.addEventListener('input', () => {
+[minus, plus].forEach(e => e.addEventListener('click', () => {
+    calc();
+    calcCustom();
+}));
+
+let reset = document.getElementById('reset');
+reset.addEventListener('click', () => {
     tips.forEach(e => e.classList.remove('ativo'));
-    let customTip = custom.value / 100,
-        valor = bill.value;
-
-    if (valor && customTip) {
-        let numb = valor * customTip / people.value;
-        tipamount.innerText = `$${numb.toFixed(2)}`;
-    }
+    bill.value = '';
+    custom.value = '';
+    people.value = 1;
+    tipamount.innerText = '$0.00';
+    total.innerText = '$0.00';
 })
