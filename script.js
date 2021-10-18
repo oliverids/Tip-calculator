@@ -36,7 +36,7 @@ function calcCustom() {
     if (valor && customTip) {
         let numb = valor * customTip / people.value;
         tipamount.innerText = `$${numb.toFixed(2)}`;
-        total.innerText = `$${(valor + valor * customTip) / people.value}`;
+        total.innerText = `$${((valor + valor * customTip) / people.value).toFixed(2)}`;
     }
 }
 
@@ -47,15 +47,15 @@ function calc() {
         tip = +(selectedTip[0].innerText.slice(0, -1)) / 100;
         numb = valor * tip / people.value;
         tipamount.innerText = `$${numb.toFixed(2)}`;
-        total.innerText = `$${(valor + valor * tip) / people.value}`;
+        total.innerText = `$${((valor + valor * tip) / people.value).toFixed(2)}`;
     }
 }
 
 custom.addEventListener('input', calcCustom);
-tips.forEach(each => each.addEventListener('click', calc));
 [calc, calcCustom].forEach(exe => {
     bill.addEventListener('input', exe);
     [minus, plus].forEach(e => e.addEventListener('click', exe));
+    tips.forEach(each => each.addEventListener('click', exe));
 })
 
 let reset = document.getElementById('reset');
